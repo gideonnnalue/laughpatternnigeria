@@ -1,0 +1,12 @@
+.tag {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 1.4rem;
+    background: linear-gradient(
+      to right,
+      $color-primary,
+      darken($color-primary, 10rem)
+    );
+    border-radius: 0.5rem;
+    display: inline;
+}

@@ -1,0 +1,37 @@
+.single-event {
+  &__header {
+    background: linear-gradient(
+        to right,
+        rgba($color-black, 0.7),
+        rgba($color-black, 0.7)
+      ),
+      url(../../images/carousel11.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 10rem;
+    height: 60vh;
+
+    &--heading {
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: 5rem;
+    }
+
+    &--time {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 1.6rem;
+      opacity: .8;
+    }
+  }
+}
+
+.section-single-event {
+  .single-event {
+    &__text {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-size: 2rem;
+    }
+  }
+}

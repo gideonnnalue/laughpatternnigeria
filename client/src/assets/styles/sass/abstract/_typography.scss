@@ -1,0 +1,25 @@
+.heading {
+    font-family: 'Lato', serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+
+    &-primary {
+        color: #404044;
+        font-size: 3rem;
+    }
+
+    &::after {
+        content: '';
+        background: #fd0101;
+        // background: linear-gradient(to right, #99ca3c 0, #723616 51%, #99ca3c 100%);
+        position: absolute;
+        height: 2px;
+        width: 80px;
+        display: block;
+        margin-top: 10px;
+        left: 0;
+    }
+
+}
+

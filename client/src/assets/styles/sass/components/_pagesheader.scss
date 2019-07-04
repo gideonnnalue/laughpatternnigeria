@@ -1,0 +1,19 @@
+.section-header {
+    height: 35vh;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(
+        to right,
+        rgba($color-black, 0.8),
+        rgba($color-black, 0.8)
+      ),
+      url(../../images/carousel11.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 5rem;
+    background-attachment: fixed;
+  
+    h1 {
+      font-size: 6rem;
+    }
+  }
+  

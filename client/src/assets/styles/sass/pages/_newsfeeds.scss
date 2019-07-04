@@ -1,0 +1,13 @@
+.section-feeds {
+  padding: 10rem;
+  font-family: "Poppins", sans-serif;
+
+  @include respond(tab-port) {
+    padding: 5rem;
+  }
+
+  @include respond(phone) {
+    padding: 1rem;
+    padding-top: 3rem;
+  }
+}

@@ -1,0 +1,49 @@
+.carousel {
+  &__wrapper {
+    height: 80vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  &__images {
+    width: 100vw;
+    height: 80vh;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    
+  }
+
+  &__logo {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    // margin: 0 auto;
+
+    img {
+      width: 200px;
+      margin: auto;
+    }
+  }
+
+  &__inner {
+    height: 100% !important;
+  }
+
+  &__heading {
+    font-family: "Poppins", sans-serif;
+    font-size: 6rem;
+    font-weight: 700;
+    // text-shadow: 3px 3px 0 rgb(238, 255, 2);
+  }
+
+  &__paragraph {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6rem;
+    width: 100%;
+    // max-width: 70rem;
+  }
+  
+}

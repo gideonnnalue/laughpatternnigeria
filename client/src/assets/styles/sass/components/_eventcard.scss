@@ -1,0 +1,35 @@
+.events-event {
+  &__card {
+    width: 32rem;
+    transition: all 0.3s;
+    position: relative;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+
+    &:hover {
+      box-shadow: 0 0.8rem 1.5rem 0.2rem rgba($color-black, 0.1);
+    }
+  }
+  &__title {
+    font-size: 2.1rem;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-primary;
+      cursor: pointer;
+    }
+  }
+
+  &__desc {
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+
+  &__type {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+}
