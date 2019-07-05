@@ -24,6 +24,8 @@ import Members from "./components/mainPage/members";
 import SingleEvent from "./components/mainPage/singleEvent";
 import SingleNewsFeed from "./components/mainPage/singleNewsFeed";
 
+import Admin from "./components/adminPage";
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -153,8 +155,17 @@ class App extends Component {
                                 />
                             )}
                         />
-                        {/* <Route exact path="/" component={Landing} /> */}
-                        {/* <Route exact path="/about" component={About} /> */}
+                        <Switch>
+                        <Route
+                            path="/dashboard"
+                            render={routeProps => (
+                                <Admin
+                                    {...routeProps}
+                                    turnOffNav={this.turnOffNav}
+                                />
+                            )}
+                        />
+                        </Switch>
                         <Footer />
                     </div>
                 </ScrollToTop>
