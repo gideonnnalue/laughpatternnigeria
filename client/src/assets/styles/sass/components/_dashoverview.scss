@@ -1,0 +1,26 @@
+.dashboard__body {
+    @include respond(phone) {
+        border-radius: .25rem !important;
+      }
+}
+
+.dashboard__overview {
+    @include respond(phone) {
+        flex-direction: column !important;
+        text-align: center;
+      }
+
+    // &--icon {
+    //     color: $color-primary
+    // }
+
+    &--text {
+        h3 {
+            font-size: 1.8rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
+    }
+}
+
