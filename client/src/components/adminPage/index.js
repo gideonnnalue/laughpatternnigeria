@@ -4,8 +4,23 @@ import Dashboard from "./dashboard/Dashboard";
 import AdminHeader from "./AdminHeader";
 import Events from "./dashboard/Events";
 import Members from "./dashboard/Members";
+import Videos from "./dashboard/Videos";
+import Pictures from "./dashboard/Pictures";
 
 class Admin extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            heading: ""
+        };
+
+        this.setHeading = this.setHeading.bind(this);
+    }
+
+    setHeading(heading) {
+        this.setState({ heading });
+    }
+
     componentWillUnmount() {
         this.props.turnOffNav();
     }
@@ -16,20 +31,7 @@ class Admin extends Component {
                     {/* <!-- For demo purpose --> */}
                     <div class="row py-5 text-white">
                         <div class="col-lg-9 mx-auto text-center">
-                            <h1 class="display-4">Bootstrap 4 vertical menu</h1>
-                            <p class="lead mb-0">
-                                Create nicely styled vertical menu using
-                                Bootstrap 4.
-                            </p>
-                            <p class="lead">
-                                Snippet by{" "}
-                                <a
-                                    href="https://bootstrapious.com/snippets"
-                                    class="text-white text-underlined"
-                                >
-                                    <u>Bootstrapious</u>
-                                </a>
-                            </p>
+                            <h1 class="display-4">{this.state.heading}</h1>
                         </div>
                     </div>
                 </div>
@@ -39,22 +41,74 @@ class Admin extends Component {
                             <AdminHeader />
 
                             <Switch>
-                            <Route
+                                <Route
                                     path={`${this.props.match.path}/members`}
-                                    component={Members}
+                                    render={routeProps => (
+                                        <Members
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
                                 />
                                 <Route
                                     path={`${this.props.match.path}/events`}
-                                    component={Events}
+                                    render={routeProps => (
+                                        <Events
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
                                 />
                                 <Route
                                     path={`${this.props.match.path}/dashboard`}
-                                    component={Dashboard}
+                                    render={routeProps => (
+                                        <Dashboard
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
                                 />
+                                <Route
+                                    path={`${this.props.match.path}/videos`}
+                                    render={routeProps => (
+                                        <Videos
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
+                                />
+
+                                <Route
+                                    path={`${this.props.match.path}/pictures`}
+                                    render={routeProps => (
+                                        <Pictures
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
+                                />
+
                                 <Route
                                     exact
                                     path={this.props.match.path}
-                                    render={() => <Dashboard />}
+                                    render={routeProps => (
+                                        <Dashboard
+                                            {...routeProps}
+                                            setHeading={heading =>
+                                                this.setHeading(heading)
+                                            }
+                                        />
+                                    )}
                                 />
                             </Switch>
                         </div>

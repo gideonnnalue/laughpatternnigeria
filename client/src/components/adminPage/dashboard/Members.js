@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import img from "../../../assets/images/carousel11.jpg";
+import PropTypes from 'prop-types';
 
 class Members extends Component {
+
+    componentDidMount() {
+        this.props.setHeading("Members")
+    }
+    
     render() {
         return (
             <div class="col-lg-8 mb-5">
@@ -50,6 +56,10 @@ class Members extends Component {
             </div>
         );
     }
+}
+
+Members.propTypes = {
+    setHeading: PropTypes.func.isRequired
 }
 
 export default Members;

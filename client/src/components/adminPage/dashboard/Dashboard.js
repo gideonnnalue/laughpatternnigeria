@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
+
+    componentDidMount() {
+        this.props.setHeading("Dashboard")
+    }
+
     render() {
         return (
             <div class="col-lg-8 mb-5">
@@ -21,10 +26,10 @@ class Dashboard extends Component {
                             </div>
                             <div className="dashboard__overview--button">
                                 <Link
-                                    to="/"
+                                    to="/dashboard/members"
                                     className="btns btns--red btns--custom-small btns--animated text-white"
                                 >
-                                    More Events
+                                    All Members
                                 </Link>
                             </div>
                         </div>
@@ -46,10 +51,10 @@ class Dashboard extends Component {
                             </div>
                             <div className="dashboard__overview--button">
                                 <Link
-                                    to="/"
+                                    to="/dashboard/events"
                                     className="btns btns--blue btns--custom-small btns--animated text-white"
                                 >
-                                    More Events
+                                    All Events
                                 </Link>
                             </div>
                         </div>
@@ -71,10 +76,10 @@ class Dashboard extends Component {
                             </div>
                             <div className="dashboard__overview--button">
                                 <Link
-                                    to="/"
+                                    to="/dashboard/events"
                                     className="btns btns--yellow btns--custom-small btns--animated text-white"
                                 >
-                                    More Events
+                                    All Videos
                                 </Link>
                             </div>
                         </div>

@@ -25,6 +25,7 @@ import SingleEvent from "./components/mainPage/singleEvent";
 import SingleNewsFeed from "./components/mainPage/singleNewsFeed";
 
 import Admin from "./components/adminPage";
+import Login from "./components/auth/Login";
 
 class App extends Component {
     constructor(props) {
@@ -155,16 +156,27 @@ class App extends Component {
                                 />
                             )}
                         />
-                        <Switch>
+
                         <Route
-                            path="/dashboard"
+                            path="/admin"
                             render={routeProps => (
-                                <Admin
+                                <Login
                                     {...routeProps}
                                     turnOffNav={this.turnOffNav}
                                 />
                             )}
                         />
+
+                        <Switch>
+                            <Route
+                                path="/dashboard"
+                                render={routeProps => (
+                                    <Admin
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
                         </Switch>
                         <Footer />
                     </div>

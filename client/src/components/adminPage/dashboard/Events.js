@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import img from "../../../assets/images/carousel11.jpg";
+import PropTypes from 'prop-types';
 
 class Events extends Component {
+
+    componentDidMount() {
+        this.props.setHeading("Events")
+    }
+
     render() {
         return (
             <div class="col-lg-8 mb-5">
@@ -50,6 +56,10 @@ class Events extends Component {
             </div>
         );
     }
+}
+
+Events.propTypes = {
+    setHeading: PropTypes.func.isRequired
 }
 
 export default Events;
