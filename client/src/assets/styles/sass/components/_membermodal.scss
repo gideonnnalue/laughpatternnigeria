@@ -1,0 +1,41 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+/*
+  *
+  * ==========================================
+  * FOR DEMO PURPOSES
+  * ==========================================
+  *
+  */
+
+.section-member-modal {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.6rem;
+
+    button {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+}
+
+.member-modal {
+    background: #00b4db;
+    background: -webkit-linear-gradient(to right, #0083b0, #00b4db);
+    background: linear-gradient(to right, #0083b0, #00b4db);
+
+    font-size: 1.6rem;
+
+    input[type="file"] {
+        display: none;
+        font-size: 1.6rem;
+    }
+}

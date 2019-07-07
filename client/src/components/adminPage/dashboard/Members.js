@@ -2,8 +2,23 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import img from "../../../assets/images/carousel11.jpg";
 import PropTypes from 'prop-types';
+import MemberModal from "../utils/MemberModal";
 
 class Members extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          modal: false
+        };
+    
+        this.toggle = this.toggle.bind(this);
+      }
+    
+      toggle() {
+        this.setState(prevState => ({
+          modal: !prevState.modal
+        }));
+      }
 
     componentDidMount() {
         this.props.setHeading("Members")
@@ -16,12 +31,12 @@ class Members extends Component {
                 <div class="p-3 bg-white d-flex align-items-center shadow-sm rounded mb-5 dashboard__body">
                     <div class="dashboard__top d-flex ">
                         <div className="dashboard__overview d-flex flex-row align-items-center justify-content-around">
-                            <Link
-                                to="/"
+                            <button
                                 className="btns btns--blue btns--custom-small btns--animated text-white ml-4"
+                                onClick={this.toggle}
                             >
                                 Add Members
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -53,6 +68,7 @@ class Members extends Component {
                         </div>
                     </div>
                 </div>
+                <MemberModal modal={this.state.modal} toggle={this.toggle}/>
             </div>
         );
     }
