@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import ScrollToTop from "./ScrollToTop";
 
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { setCurrentUser, logoutUser } from "./actions/authActions";
+
 // styling
 import "bootstrap/dist/css/bootstrap.min.css";
 import $ from "jquery";
@@ -26,6 +30,30 @@ import SingleNewsFeed from "./components/mainPage/singleNewsFeed";
 
 import Admin from "./components/adminPage";
 import Login from "./components/auth/Login";
+
+import { Provider } from "react-redux";
+import store from "./store";
+
+// Check for token
+if (localStorage.jwtToken) {
+    // Set auth token header auth
+    setAuthToken(localStorage.jwtToken);
+    // Decode token and get user info and exp
+    const decoded = jwt_decode(localStorage.jwtToken);
+    // Set user and isAuthenticated
+    store.dispatch(setCurrentUser(decoded));
+  
+    // Check for expired token
+    const currentTime = Date.now() / 1000;
+    if (decoded.exp < currentTime) {
+      // Logout user
+      store.dispatch(logoutUser());
+      // TODO: clear current profile
+    //   store.dispatch(clearCurrentProfile());
+      // Redirect to home
+      window.location.href = "/";
+    }
+  }
 
 class App extends Component {
     constructor(props) {
@@ -75,113 +103,115 @@ class App extends Component {
 
     render() {
         return (
-            <Router>
-                <ScrollToTop>
-                    <div className="App">
-                        <Navigation
-                            showNav={this.showNav}
-                            navShow={this.state.navShow}
-                        />
-                        <Route
-                            path="/"
-                            exact
-                            render={routeProps => (
-                                <Landing
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/about"
-                            render={routeProps => (
-                                <About
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/events"
-                            render={routeProps => (
-                                <Events
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/news"
-                            render={routeProps => (
-                                <NewsFeed
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/gallery"
-                            render={routeProps => (
-                                <Gallery
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/members"
-                            render={routeProps => (
-                                <Members
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-                        <Route
-                            path="/event/:eventID"
-                            render={routeProps => (
-                                <SingleEvent
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-
-                        <Route
-                            path="/newsfeed/:newsfeedID"
-                            render={routeProps => (
-                                <SingleNewsFeed
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-
-                        <Route
-                            path="/admin"
-                            render={routeProps => (
-                                <Login
-                                    {...routeProps}
-                                    turnOffNav={this.turnOffNav}
-                                />
-                            )}
-                        />
-
-                        <Switch>
+            <Provider store={store}>
+                <Router>
+                    <ScrollToTop>
+                        <div className="App">
+                            <Navigation
+                                showNav={this.showNav}
+                                navShow={this.state.navShow}
+                            />
                             <Route
-                                path="/dashboard"
+                                path="/"
+                                exact
                                 render={routeProps => (
-                                    <Admin
+                                    <Landing
                                         {...routeProps}
                                         turnOffNav={this.turnOffNav}
                                     />
                                 )}
                             />
-                        </Switch>
-                        <Footer />
-                    </div>
-                </ScrollToTop>
-            </Router>
+                            <Route
+                                path="/about"
+                                render={routeProps => (
+                                    <About
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/events"
+                                render={routeProps => (
+                                    <Events
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/news"
+                                render={routeProps => (
+                                    <NewsFeed
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/gallery"
+                                render={routeProps => (
+                                    <Gallery
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/members"
+                                render={routeProps => (
+                                    <Members
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+                            <Route
+                                path="/event/:eventID"
+                                render={routeProps => (
+                                    <SingleEvent
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+
+                            <Route
+                                path="/newsfeed/:newsfeedID"
+                                render={routeProps => (
+                                    <SingleNewsFeed
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+
+                            <Route
+                                path="/admin"
+                                render={routeProps => (
+                                    <Login
+                                        {...routeProps}
+                                        turnOffNav={this.turnOffNav}
+                                    />
+                                )}
+                            />
+
+                            <Switch>
+                                <Route
+                                    path="/dashboard"
+                                    render={routeProps => (
+                                        <Admin
+                                            {...routeProps}
+                                            turnOffNav={this.turnOffNav}
+                                        />
+                                    )}
+                                />
+                            </Switch>
+                            <Footer />
+                        </div>
+                    </ScrollToTop>
+                </Router>
+            </Provider>
         );
     }
 }

@@ -5,6 +5,13 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+// multer
+
+const multer = require('multer');
+const upload = multer({
+    dest: 'images'
+});
+
 // Load input validators
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
@@ -110,5 +117,9 @@ router.get(
         });
     }
 );
+
+router.post('/upload', upload.single('upload'), (req, res) => {
+    res.json({msg: "working"})
+})
 
 module.exports = router;

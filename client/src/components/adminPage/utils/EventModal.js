@@ -2,9 +2,15 @@ import React, { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import InputTextGroup from "../../utils/InputTextGroup";
 import InputTextAreaGroup from "../../utils/InputTextAreaGroup";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 class EventModal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    componentWillUnmount() {}
     render() {
         return (
             <div className="section-event-modal">
@@ -39,6 +45,8 @@ class EventModal extends Component {
                                             class="custom-file-input"
                                             id="inputGroupFile01"
                                             aria-describedby="inputGroupFileAddon01"
+                                            name="file"
+                                            onChange={this.props.onFileChange}
                                         />
                                         <label
                                             class="custom-file-label"
@@ -55,6 +63,9 @@ class EventModal extends Component {
                                         type="text"
                                         id="title"
                                         placeholder="Event Title"
+                                        name="title"
+                                        value={this.props.title}
+                                        onChange={this.props.onChange}
                                     />
                                 </div>
 
@@ -66,13 +77,22 @@ class EventModal extends Component {
                                     <InputTextAreaGroup
                                         id="event-details"
                                         placeholder="Event Details"
+                                        name="desc"
+                                        value={this.props.desc}
+                                        onChange={this.props.onChange}
                                     />
                                 </div>
                             </div>
                         </section>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={this.props.toggle}>
+                        <Button
+                            color="primary"
+                            onClick={() => {
+                                this.props.toggle();
+                                this.props.onSubmit();
+                            }}
+                        >
                             save
                         </Button>{" "}
                         <Button color="secondary" onClick={this.props.toggle}>
@@ -88,6 +108,6 @@ class EventModal extends Component {
 EventModal.propTypes = {
     toggle: PropTypes.func.isRequired,
     modal: PropTypes.bool.isRequired
-}
+};
 
 export default EventModal;

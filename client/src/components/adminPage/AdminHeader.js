@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { NavLink } from 'react-router-dom';
+import {connect} from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import PropTypes from "prop-types";
 
 class AdminHeader extends Component {
+
     render() {
         return (
             <div class="col-lg-4 mb-4 mb-lg-0">
@@ -39,17 +43,10 @@ class AdminHeader extends Component {
                         <i class="fas fa-photo-video mr-2" />
                         Videos
                     </NavLink>
-                    {/* <a href="#" class="nav-link px-4 rounded-pill">
-                        <i class="fa fa-line-chart mr-2" />
-                        Action here
-                        <span class="badge badge-primary px-2 rounded-pill ml-2">
-                            12
-                        </span>
-                    </a>
-                    <a href="#" class="nav-link px-4 disabled">
-                        <i class="fa fa-pie-chart mr-2" />
-                        Disabled link
-                    </a> */}
+                    <NavLink to="/" class="nav-link px-4 rounded-pill" onClick={this.props.logoutUser.bind(this)}>
+                        Logout
+                    </NavLink>
+                    
                 </nav>
                 {/* <!-- End --> */}
             </div>
@@ -57,4 +54,8 @@ class AdminHeader extends Component {
     }
 }
 
-export default AdminHeader;
+AdminHeader.propTypes = {
+    logoutUser: PropTypes.func
+}
+
+export default connect(null, { logoutUser })(AdminHeader);

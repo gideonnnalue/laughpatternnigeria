@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 
 const users = require('./routes/api/users');
+const events = require('./routes/api/events');
 
 const app = express();
 
 app.use(morgan("dev"));
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());;
+app.use(bodyParser.json());
+app.use(bodyParser.raw())
 
 // DB Config;
 const db = require("./config/keys").mongoURI;
@@ -32,6 +34,7 @@ require("./config/passport")(passport);
 
 // Use Routes
 app.use('/api/users', users);
+app.use('/api/events', events);
 
 const port = process.env.PORT || 5000;
 
