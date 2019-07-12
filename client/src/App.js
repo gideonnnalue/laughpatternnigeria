@@ -33,6 +33,7 @@ import Login from "./components/auth/Login";
 
 import { Provider } from "react-redux";
 import store from "./store";
+import PrivateRoute from "./utils/PrivateRoute";
 
 // Check for token
 if (localStorage.jwtToken) {
@@ -42,18 +43,18 @@ if (localStorage.jwtToken) {
     const decoded = jwt_decode(localStorage.jwtToken);
     // Set user and isAuthenticated
     store.dispatch(setCurrentUser(decoded));
-  
+
     // Check for expired token
     const currentTime = Date.now() / 1000;
     if (decoded.exp < currentTime) {
-      // Logout user
-      store.dispatch(logoutUser());
-      // TODO: clear current profile
-    //   store.dispatch(clearCurrentProfile());
-      // Redirect to home
-      window.location.href = "/";
+        // Logout user
+        store.dispatch(logoutUser());
+        // TODO: clear current profile
+        //   store.dispatch(clearCurrentProfile());
+        // Redirect to home
+        window.location.href = "/";
     }
-  }
+}
 
 class App extends Component {
     constructor(props) {
@@ -197,14 +198,10 @@ class App extends Component {
                             />
 
                             <Switch>
-                                <Route
+                                <PrivateRoute
                                     path="/dashboard"
-                                    render={routeProps => (
-                                        <Admin
-                                            {...routeProps}
-                                            turnOffNav={this.turnOffNav}
-                                        />
-                                    )}
+                                    component={Admin}
+                                    turnOffNav={this.turnOffNav}
                                 />
                             </Switch>
                             <Footer />

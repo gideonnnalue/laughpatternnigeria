@@ -24,10 +24,10 @@ const upload = multer({
 });
 
 // Load input validators
-const validateEventInput = require("../../validation/event");
+const validateMemberInput = require("../../validation/member");
 
 // Load Event model
-const Event = require("../../models/Events");
+const Member = require("../../models/Members");
 
 // @route   GET api/events/all
 // @desc    Get all events
@@ -35,22 +35,22 @@ const Event = require("../../models/Events");
 router.get("/all", (req, res) => {
     const errors = {};
 
-    Event.find()
-        .then(events => {
-            if (!events) {
-                errors.noevents = "There are no events available";
+    Member.find()
+        .then(members => {
+            if (!members) {
+                errors.nomembers = "There are no members available";
                 return res.status(404).json(errors);
             }
 
-            res.json(events);
+            res.json(members);
         })
         .catch(err =>
-            res.status(404).json({ events: "There are no profiles" })
+            res.status(404).json({ members: "There are no members" })
         );
 });
 
 router.delete("/del", (req, res) => {
-    Event.remove({})
+    Member.remove({})
         .then(i => {
             res.json({ msg: "success" });
         })
@@ -61,36 +61,40 @@ router.delete("/del", (req, res) => {
 // @desc    Post new Event
 // @access  Private
 router.post(
-    "/event",
+    "/member",
     passport.authenticate("jwt", { session: false }),
-    upload.single("eventImage"),
+    upload.single("memberImage"),
     (req, res) => {
-        const { errors, isValid } = validateEventInput(req.body);
+        const { errors, isValid } = validateMemberInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
-        const title = req.body.title;
-        const details = req.body.details;
+        const name = req.body.name;
+        const job = req.body.job;
+        const desc = req.body.desc;
         const image = req.file.buffer;
 
         // Find if title exists
-        Event.findOne({ title }).then(event => {
+        Member.findOne({ name }).then(member => {
             // Check for user
-            if (event) {
-                return res.status(404).json({ event: "Event already exists" });
+            if (member) {
+                return res
+                    .status(404)
+                    .json({ member: "Member already exists" });
             }
 
-            const newEvent = new Event({
-                title,
-                details,
+            const newMember = new Member({
+                name,
+                job,
+                desc,
                 image
             });
 
-            newEvent
+            newMember
                 .save()
-                .then(event => res.json({ event }))
+                .then(member => res.json({ member }))
                 .catch(err => console.log(err));
         });
     },
@@ -107,49 +111,55 @@ router.post(
 router.post(
     "/edit",
     passport.authenticate("jwt", { session: false }),
-    upload.single("eventImage"),
+    upload.single("memberImage"),
     (req, res) => {
-        const { errors, isValid } = validateEventInput(req.body);
+        const { errors, isValid } = validateMemberInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
-        const events = {};
-        if (req.body.title) events.title = req.body.title;
-        if (req.body.details) events.details = req.body.details;
+        const member = {};
+        if (req.body.name) member.name = req.body.name;
+        if (req.body.job) member.job = req.body.job;
+        if (req.body.desc) member.desc = req.body.desc;
+        if (req.body.details) member.details = req.body.details;
         if (
             req.file.buffer ||
             req.file.buffer !== null ||
             req.file.buffer !== undefined
-        )
-            events.image = req.file.buffer;
+        ) {
+            member.image = req.file.buffer;
+        }
 
         // Find if title exists
-        Event.findOne({ _id: req.body.id }).then(event => {
+        Member.findOne({ _id: req.body.id }).then(member => {
             // Check for user
-            if (!event) {
-                return res.status(404).json({ event: "Event does not exists" });
+            if (!member) {
+                return res
+                    .status(404)
+                    .json({ member: "Member does not exists" });
             }
 
             Event.findOneAndUpdate({
                 _id: req.body.id,
-                $set: events,
+                $set: member,
                 new: true
             })
-                .then(event => {
-                    res.json(event);
+                .then(member => {
+                    res.json(member);
                 })
                 .catch(err => console.log(err));
 
-            const newEvent = new Event({
-                title,
-                details,
-                image
+            const newMember = new newMember({
+                name,
+                job,
+                desc,
+                details
             });
 
-            newEvent
+            newMember
                 .save()
-                .then(event => res.json({ event }))
+                .then(member => res.json({ member }))
                 .catch(err => console.log(err));
         });
     },
@@ -164,42 +174,42 @@ router.post(
 // @desc    Delete Event
 // @access  Private
 router.delete(
-    "/event/:eventId",
+    "/member/:memberId",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
-        Event.findOneAndRemove({ _id: req.params.eventId })
+        Member.findOneAndRemove({ _id: req.params.memberId })
             .then(data => res.json({ msg: "success" }))
             .catch(err => console.log(err));
     }
 );
 
-router.get("/event/:eventId/image", (req, res) => {
+router.get("/member/:memberId/image", (req, res) => {
     try {
-        Event.findById(req.params.eventId).then(event => {
-            if (!event || !event.image) {
+        Member.findById(req.params.memberId).then(member => {
+            if (!member || !member.image) {
                 throw new Error();
             }
 
             res.set("Content-Type", "image/jpg");
-            res.send(event.image);
+            res.send(member.image);
         });
     } catch (e) {
         res.status(404).send("cant find file");
     }
 });
 
-router.post(
-    "/upload",
-    passport.authenticate("jwt", { session: false }),
-    upload.single("eventImage"),
-    (req, res) => {
-        res.json({ msg: "working" });
-    },
-    (error, req, res, next) => {
-        res.status(400).json({
-            error: error.message
-        });
-    }
-);
+// router.post(
+//     "/upload",
+//     passport.authenticate("jwt", { session: false }),
+//     upload.single("eventImage"),
+//     (req, res) => {
+//         res.json({ msg: "working" });
+//     },
+//     (error, req, res, next) => {
+//         res.status(400).json({
+//             error: error.message
+//         });
+//     }
+// );
 
 module.exports = router;

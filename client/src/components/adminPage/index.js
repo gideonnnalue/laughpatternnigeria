@@ -6,6 +6,7 @@ import Events from "./dashboard/Events";
 import Members from "./dashboard/Members";
 import Videos from "./dashboard/Videos";
 import Pictures from "./dashboard/Pictures";
+import PrivateRoute from "../../utils/PrivateRoute";
 
 class Admin extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Admin extends Component {
     }
 
     componentWillUnmount() {
-        this.props.turnOffNav();
+        console.log(this.props);
     }
     render() {
         return (

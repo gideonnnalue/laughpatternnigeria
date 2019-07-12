@@ -1,28 +1,39 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getAllEvents, addEvent } from "../../../actions/eventActions";
+import {
+    getAllEvents,
+    addEvent,
+    deleteEvent,
+    editEvent
+} from "../../../actions/eventActions";
 import img from "../../../assets/images/carousel11.jpg";
 import PropTypes from "prop-types";
 import EventModal from "../utils/EventModal";
 import Spinner from "../utils/Spinner";
 import isEmpty from "../../../validation/is-empty";
+import EditEventModal from "../utils/EditEventModal";
 
 class Events extends Component {
     constructor(props) {
         super(props);
         this.state = {
             modal: false,
+            editModal: false,
             title: "",
             desc: "",
-            file: null
+            file: null,
+            id: null
         };
 
         this.toggle = this.toggle.bind(this);
         this.onFileChange = this.onFileChange.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onEditSubmit = this.onEditSubmit.bind(this);
         this.onClearState = this.onClearState.bind(this);
+        this.onDelete = this.onDelete.bind(this);
+        this.editToggle = this.editToggle.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +44,12 @@ class Events extends Component {
     toggle() {
         this.setState(prevState => ({
             modal: !prevState.modal
+        }));
+    }
+
+    editToggle() {
+        this.setState(prevState => ({
+            editModal: !prevState.editModal
         }));
     }
 
@@ -51,6 +68,20 @@ class Events extends Component {
             details: this.state.desc,
             eventImage: this.state.file
         });
+    }
+
+    onEditSubmit() {
+        this.props.editEvent({
+            id: this.state.id,
+            title: this.state.title,
+            details: this.state.desc,
+            eventImage: this.state.file
+        });
+        this.onClearState();
+    }
+
+    onDelete(eventId) {
+        this.props.deleteEvent(eventId);
     }
 
     onClearState() {
@@ -93,16 +124,20 @@ class Events extends Component {
                                 <a
                                     className="btns-text px-4 mr-4"
                                     href="#"
-                                    onClick={this.toggle}
+                                    onClick={() => {
+                                        this.editToggle();
+                                        this.setState({ id: event._id });
+                                    }}
                                 >
                                     Edit
                                 </a>
-                                <Link
-                                    to="/"
+                                <a
+                                    href="#"
                                     className="btns-text btns-text--red px-3"
+                                    onClick={() => this.onDelete(event._id)}
                                 >
                                     Delete
-                                </Link>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -138,6 +173,16 @@ class Events extends Component {
                     desc={this.state.desc}
                     onSubmit={this.onSubmit}
                 />
+
+                <EditEventModal
+                    modal={this.state.editModal}
+                    toggle={this.editToggle}
+                    onFileChange={this.onFileChange}
+                    onChange={this.onChange}
+                    title={this.state.title}
+                    desc={this.state.desc}
+                    onSubmit={this.onEditSubmit}
+                />
             </div>
         );
     }
@@ -154,5 +199,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getAllEvents, addEvent }
+    { getAllEvents, addEvent, deleteEvent, editEvent }
 )(Events);

@@ -7,6 +7,7 @@ import {
     GET_EVENTS
 } from "./types";
 import axios from "axios";
+import isEmpty from "../validation/is-empty";
 
 export const getAllEvents = () => dispatch => {
     dispatch(setEventLoading());
@@ -17,7 +18,7 @@ export const getAllEvents = () => dispatch => {
             // console.log(res.data.events);
             dispatch({
                 type: GET_EVENTS,
-                payload: res.data.events
+                payload: res.data
             });
         })
         .catch(err => {
@@ -44,14 +45,46 @@ export const addEvent = ({ title, details, eventImage }) => dispatch => {
         })
         .catch(err => {
             console.log(err);
-            dispatch({
-                type: GET_EVENTS,
-                payload: {}
-            });
+            dispatch(getAllEvents());
         });
 };
 
-export const deleteEvent = eventId => dispatch => {};
+export const editEvent = ({ id, title, details, eventImage }) => dispatch => {
+    // console.log("edit");
+    let data = new FormData();
+    data.append("id", id);
+    data.append("title", title);
+    data.append("details", details);
+    if (isEmpty(eventImage)) {
+        data.append("eventImage", eventImage);
+    }
+
+    dispatch(setEventLoading());
+    axios
+        .post("/api/events/edit", data)
+        .then(res => {
+            console.log(res.data);
+            dispatch(getAllEvents());
+        })
+        .catch(err => {
+            console.log(err);
+            dispatch(getAllEvents());
+        });
+};
+
+export const deleteEvent = eventId => dispatch => {
+    dispatch(setEventLoading());
+    axios
+        .delete(`/api/events/event/${eventId}`)
+        .then(res => {
+            console.log(res.data);
+            dispatch(getAllEvents());
+        })
+        .catch(err => {
+            dispatch(getAllEvents());
+            console.log(err);
+        });
+};
 
 // Event Loading
 export const setEventLoading = () => {

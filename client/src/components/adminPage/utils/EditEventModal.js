@@ -4,7 +4,7 @@ import InputTextGroup from "../../utils/InputTextGroup";
 import InputTextAreaGroup from "../../utils/InputTextAreaGroup";
 import PropTypes from "prop-types";
 
-class EventModal extends Component {
+class EditEventModal extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -21,7 +21,7 @@ class EventModal extends Component {
                     centered
                 >
                     <ModalHeader toggle={this.props.toggle}>
-                        <h1>Add Events</h1>
+                        <h1>Edit Events</h1>
                     </ModalHeader>
                     <ModalBody>
                         <section className="event-modal">
@@ -57,38 +57,26 @@ class EventModal extends Component {
                                     </div>
                                 </div>
 
-                                <h2 className="text-white lead">Member Name</h2>
+                                <h2 className="text-white lead">Event title</h2>
                                 <div className="form-group">
                                     <InputTextGroup
                                         type="text"
-                                        id="name"
-                                        placeholder="Member Name"
-                                        name="name"
-                                        value={this.props.name}
-                                        onChange={this.props.onChange}
-                                    />
-                                </div>
-
-                                <h2 className="text-white lead">Member Job</h2>
-                                <div className="form-group">
-                                    <InputTextGroup
-                                        type="text"
-                                        id="job"
-                                        placeholder="Member Job"
-                                        name="job"
-                                        value={this.props.job}
+                                        id="title"
+                                        placeholder="Event Title"
+                                        name="title"
+                                        value={this.props.title}
                                         onChange={this.props.onChange}
                                     />
                                 </div>
 
                                 <h2 className="text-white lead">
-                                    Member Description
+                                    Event Description
                                 </h2>
 
                                 <div className="form-group">
                                     <InputTextAreaGroup
-                                        id="member-details"
-                                        placeholder="Member Details"
+                                        id="event-details"
+                                        placeholder="Event Details"
                                         name="desc"
                                         value={this.props.desc}
                                         onChange={this.props.onChange}
@@ -117,9 +105,9 @@ class EventModal extends Component {
     }
 }
 
-EventModal.propTypes = {
+EditEventModal.propTypes = {
     toggle: PropTypes.func.isRequired,
     modal: PropTypes.bool.isRequired
 };
 
-export default EventModal;
+export default EditEventModal;

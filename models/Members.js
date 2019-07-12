@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Create Schema
 const MembersSchema = new Schema({
-    Name: {
+    name: {
         type: String,
         required: true
     },
@@ -15,10 +15,13 @@ const MembersSchema = new Schema({
         type: String,
         required: true
     },
+    image: {
+        type: Buffer
+    },
     date: {
         type: Date,
         default: Date.now
     }
 });
 
-module.exports = Members = mongoose.model('members', MembersSchema);
+module.exports = Members = mongoose.model("members", MembersSchema);
