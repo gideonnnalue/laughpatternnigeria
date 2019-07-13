@@ -76,11 +76,11 @@ class navigation extends Component {
                                 <span>05 </span>Gallery
                             </NavLink>
                         </li>
-                        <li className="navigation__item">
+                        {/* <li className="navigation__item">
                             <NavLink to="/members" className="navigation__link">
                                 <span>06 </span>Members
                             </NavLink>
-                        </li>
+                        </li> */}
                         {this.props.auth.isAuthenticated ? (
                             <li className="navigation__item">
                                 <NavLink
@@ -102,7 +102,7 @@ class navigation extends Component {
 
 navigation.propTypes = {
     auth: PropTypes.object.isRequired
-}
+};
 
 const mapStateToProps = state => ({
     auth: state.auth

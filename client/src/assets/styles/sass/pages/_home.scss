@@ -1,221 +1,221 @@
 .section-info {
-  background-color: $color-primary;
-  // margin-top: -5rem !important;
-  padding: 3rem;
-  color: $color-white;
-  font-family: "Poppins", sans-serif;
+    background-color: $color-primary;
+    // margin-top: -5rem !important;
+    padding: 3rem;
+    color: $color-white;
+    font-family: "Poppins", sans-serif;
 
-  p {
-    font-size: 1.6rem;
-    opacity: 0.8;
-  }
+    p {
+        font-size: 1.6rem;
+        opacity: 0.8;
+    }
 
-  .info-icons {
-    font-size: 36px;
-  }
+    .info-icons {
+        font-size: 36px;
+    }
 }
 
 .section-about {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  padding: 10rem 3rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    padding: 10rem 3rem;
 
-  p {
-    font-size: 2rem;
-    color: $color-grey-dark-3;
-    // text-align: justify;
-    word-spacing: 1px;
-    line-height: 2.2rem;
-    margin-top: 1.8rem;
-  }
-
-  .about-images {
-    //   margin: 50px;
-    position: relative;
-    width: 100%;
-    @include respond(phone) {
-      display: none;
+    p {
+        font-size: 2rem;
+        color: $color-grey-dark-3;
+        // text-align: justify;
+        word-spacing: 1px;
+        line-height: 2.2rem;
+        margin-top: 1.8rem;
     }
 
-    .about-image {
-      position: absolute;
-      box-shadow: 3px 10px 20px rgba($color-black, 0.2);
-      margin: 70px 0;
-      backface-visibility: hidden;
-
-      img {
-        width: 300px;
+    .about-images {
+        //   margin: 50px;
+        position: relative;
+        width: 100%;
         @include respond(phone) {
-          width: 200px;
+            display: none;
         }
-      }
+
+        .about-image {
+            position: absolute;
+            box-shadow: 3px 10px 20px rgba($color-black, 0.2);
+            margin: 70px 0;
+            backface-visibility: hidden;
+
+            img {
+                width: 250px;
+                @include respond(phone) {
+                    width: 200px;
+                }
+            }
+        }
+
+        .image-1 {
+            top: 0;
+            left: 30px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                z-index: 1;
+                transform: scale(1.2);
+                cursor: pointer;
+                border: 10px solid $color-primary;
+            }
+        }
+
+        .image-2 {
+            top: -30px;
+            right: 50px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                z-index: 1;
+                transform: scale(1.2);
+                cursor: pointer;
+                border: 10px solid $color-primary;
+            }
+        }
+
+        .image-3 {
+            top: -90px;
+            left: 100px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                z-index: 1;
+                transform: scale(1.2);
+                cursor: pointer;
+                border: 10px solid $color-primary;
+            }
+        }
     }
-
-    .image-1 {
-      top: 0;
-      left: 50px;
-      transition: all 0.3s ease;
-
-      &:hover {
-        z-index: 1;
-        transform: scale(1.2);
-        cursor: pointer;
-        border: 10px solid $color-primary;
-      }
-    }
-
-    .image-2 {
-      top: 30px;
-      right: 30px;
-      transition: all 0.3s ease;
-
-      &:hover {
-        z-index: 1;
-        transform: scale(1.2);
-        cursor: pointer;
-        border: 10px solid $color-primary;
-      }
-    }
-
-    .image-3 {
-      bottom: 0;
-      left: 100px;
-      transition: all 0.3s ease;
-
-      &:hover {
-        z-index: 1;
-        transform: scale(1.2);
-        cursor: pointer;
-        border: 10px solid $color-primary;
-      }
-    }
-  }
 }
 
 .section-services {
-  font-family: "Poppins", sans-serif;
-  padding: 3rem;
-  margin-top: 3rem;
-  background-color: $color-grey-light-2;
+    font-family: "Poppins", sans-serif;
+    padding: 3rem;
+    margin-top: 3rem;
+    background-color: $color-grey-light-2;
 
-  .service-slider {
-    margin-top: 8rem;
-    margin-bottom: 5rem;
-  }
-
-  .service-info {
-    display: flex !important;
-    flex-direction: row;
-    align-items: flex-start;
-
-    &-item {
+    .service-slider {
+        margin-top: 8rem;
+        margin-bottom: 5rem;
     }
 
-    .service-icon {
-      font-size: 4rem;
+    .service-info {
+        display: flex !important;
+        flex-direction: row;
+        align-items: flex-start;
+
+        &-item {
+        }
+
+        .service-icon {
+            font-size: 4rem;
+        }
+
+        .service-desc {
+            width: 80%;
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+
+            h4 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #404044;
+            }
+
+            p {
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
     }
-
-    .service-desc {
-      width: 80%;
-      font-size: 1.6rem;
-      line-height: 1.8rem;
-
-      h4 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #404044;
-      }
-
-      p {
-        font-size: 1.6rem;
-        font-weight: 400;
-      }
-    }
-  }
 }
 
 .section-overview {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(
-      to right,
-      rgba($color-primary, 0.8),
-      rgba($color-primary, 0.8)
-    ),
-    url(../../images/img.jpg);
-  background-position: center;
-  background-size: cover;
-  padding: 5rem;
-  background-attachment: fixed;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(
+            to right,
+            rgba($color-primary, 0.8),
+            rgba($color-primary, 0.8)
+        ),
+        url(../../images/img.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 5rem;
+    background-attachment: fixed;
 
-  h3 {
-    font-size: 4rem;
-  }
+    h3 {
+        font-size: 4rem;
+    }
 
-  p {
-    font-size: $default-font-size;
-  }
+    p {
+        font-size: $default-font-size;
+    }
 }
 
 .section-ceo {
-  font-family: "Poppins", sans-serif;
-  margin-top: -2.5rem;
-  overflow: hidden;
+    font-family: "Poppins", sans-serif;
+    margin-top: -2.5rem;
+    overflow: hidden;
 
-  .ceo-card {
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba($color-black, 0.3);
-  }
-
-  .ceo-desc {
-    background-color: #ffc107;
-
-    p {
-      font-size: $default-font-size;
+    .ceo-card {
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba($color-black, 0.3);
     }
-  }
 
-  .ceo-image {
-    width: 100%;
-    height: 500px;
-    background: url(../../images/img.jpg);
-    background-size: cover;
-    background-position: center;
-  }
+    .ceo-desc {
+        background-color: #ffc107;
+
+        p {
+            font-size: $default-font-size;
+        }
+    }
+
+    .ceo-image {
+        width: 100%;
+        height: 500px;
+        background: url(../../images/ceo2.jpg);
+        background-size: cover;
+        background-position: center;
+    }
 }
 
 .section-latest-videos {
-  font-family: "Poppins", sans-serif;
-  padding: 3rem;
-  margin-top: 3rem;
+    font-family: "Poppins", sans-serif;
+    padding: 3rem;
+    margin-top: 3rem;
 }
 
 .section-latest-events {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(
-      to right,
-      rgba($color-tetiary, 0.8),
-      rgba($color-tetiary, 0.8)
-    ),
-    url(../../images/img.jpg);
-  background-position: center;
-  background-size: cover;
-  padding: 5rem;
-  background-attachment: fixed;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(
+            to right,
+            rgba($color-tetiary, 0.8),
+            rgba($color-tetiary, 0.8)
+        ),
+        url(../../images/img.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 5rem;
+    background-attachment: fixed;
 
-  .heading {
-    color: $color-white;
-  }
+    .heading {
+        color: $color-white;
+    }
 }
 
 .section-booking {
-  background-color: $color-grey-light-2;
-  padding-bottom: 5rem;
-  .booking-form {
-    max-width: 768px;
-    width: 100%;
+    background-color: $color-grey-light-2;
+    padding-bottom: 5rem;
+    .booking-form {
+        max-width: 768px;
+        width: 100%;
 
-    @include respond(phone) {
-      font-size: 2rem;
+        @include respond(phone) {
+            font-size: 2rem;
+        }
     }
-  }
 }
