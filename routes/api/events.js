@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+const sharp = require("sharp");
 
 // multer
 
@@ -64,16 +65,20 @@ router.post(
     "/event",
     passport.authenticate("jwt", { session: false }),
     upload.single("eventImage"),
-    (req, res) => {
+    async (req, res) => {
         const { errors, isValid } = validateEventInput(req.body);
 
         if (!isValid) {
             return res.status(400).json(errors);
         }
 
+        const buffer = await sharp(req.file.buffer)
+            .resize({ width: 250, height: 250 })
+            .toBuffer();
+
         const title = req.body.title;
         const details = req.body.details;
-        const image = req.file.buffer;
+        const image = buffer;
 
         // Find if title exists
         Event.findOne({ title }).then(event => {
