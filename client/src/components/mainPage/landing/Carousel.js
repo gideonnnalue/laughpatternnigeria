@@ -48,7 +48,7 @@ class Carousel extends Component {
         this.state = {
             items: [
                 {
-                    img: slide_one,
+                    img: slide_three,
                     heading: "This is Laugh Pattern",
                     desc:
                         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."
@@ -60,7 +60,7 @@ class Carousel extends Component {
                         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."
                 },
                 {
-                    img: slide_three,
+                    img: slide_one,
                     heading: "We innovate",
                     desc:
                         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."

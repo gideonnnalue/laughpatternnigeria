@@ -4,7 +4,7 @@
     .gallery {
         &__image-card {
             display: inline;
-            width: 35rem;
+            width: 25rem;
             position: relative;
             border: 0;
             cursor: pointer;
@@ -13,7 +13,6 @@
                 width: inherit;
                 position: relative;
             }
-
         }
 
         &__image-overlay {
@@ -22,21 +21,20 @@
             left: 0;
             height: inherit;
             width: inherit;
-            background: linear-gradient(to right, $color-primary, darken($color-primary, 10rem));
+            background: linear-gradient(
+                to right,
+                $color-primary,
+                darken($color-primary, 10rem)
+            );
             display: block;
         }
-
     }
-
-    
 }
-
 
 .section-video-gallery {
     background-color: $color-grey-light-2;
     padding: 5rem 0;
     .gallery {
-
         &__video-card {
             display: inline;
             width: 35rem;
@@ -51,7 +49,6 @@
                 height: 315;
                 position: relative;
             }
-
         }
 
         &__video-overlay {
@@ -60,7 +57,11 @@
             left: 0;
             height: inherit;
             width: inherit;
-            background: linear-gradient(to right, $color-primary, darken($color-primary, 10rem));
+            background: linear-gradient(
+                to right,
+                $color-primary,
+                darken($color-primary, 10rem)
+            );
             display: block;
         }
     }
