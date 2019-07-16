@@ -69,9 +69,7 @@ class AllEvents extends Component {
         };
     }
 
-    componentDidMount() {
-        this.props.getAllEvents();
-    }
+    componentDidMount() {}
     render() {
         const { events, loading } = this.props.events;
 

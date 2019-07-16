@@ -4,7 +4,9 @@ import {
     EVENT_NOT_FOUND,
     CLEAR_CURRENT_EVENT,
     GET_ERRORS,
-    GET_EVENTS
+    GET_EVENTS,
+    ADD_EVENT,
+    DELETE_EVENT
 } from "./types";
 import axios from "axios";
 import isEmpty from "../validation/is-empty";
@@ -15,7 +17,6 @@ export const getAllEvents = () => dispatch => {
     axios
         .get("/api/events/all")
         .then(res => {
-            // console.log(res.data.events);
             dispatch({
                 type: GET_EVENTS,
                 payload: res.data
@@ -25,7 +26,7 @@ export const getAllEvents = () => dispatch => {
             console.log("err");
             dispatch({
                 type: GET_EVENTS,
-                payload: {}
+                payload: null
             });
         });
 };
@@ -36,16 +37,20 @@ export const addEvent = ({ title, details, eventImage }) => dispatch => {
     data.append("details", details);
     data.append("eventImage", eventImage);
 
-    dispatch(setEventLoading());
+    // dispatch(setEventLoading());
     axios
         .post("/api/events/event", data)
         .then(res => {
-            console.log(res.data);
-            dispatch(getAllEvents());
+            dispatch({
+                type: ADD_EVENT,
+                payload: res.data
+            });
         })
         .catch(err => {
-            console.log(err);
-            dispatch(getAllEvents());
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
         });
 };
 
@@ -73,16 +78,19 @@ export const editEvent = ({ id, title, details, eventImage }) => dispatch => {
 };
 
 export const deleteEvent = eventId => dispatch => {
-    dispatch(setEventLoading());
     axios
         .delete(`/api/events/event/${eventId}`)
         .then(res => {
-            console.log(res.data);
-            dispatch(getAllEvents());
+            dispatch({
+                type: DELETE_EVENT,
+                payload: eventId
+            });
         })
         .catch(err => {
-            dispatch(getAllEvents());
-            console.log(err);
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            });
         });
 };
 

@@ -10,45 +10,10 @@ import Spinner from "../../adminPage/utils/Spinner";
 class LatestEvents extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            events: [
-                {
-                    title: "Laugh Pattern",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                },
-                {
-                    title: "Pool Party",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                },
-                {
-                    title: "Eat and join",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                },
-                {
-                    title: "Dj Services",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                },
-                {
-                    title: "Dj Services",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                },
-                {
-                    title: "Dj Services",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas fugit autem officia ut debitis a."
-                }
-            ]
-        };
+        this.state = {};
     }
 
-    componentDidMount() {
-        this.props.getAllEvents();
-    }
+    componentDidMount() {}
 
     render() {
         const settings = {
@@ -89,7 +54,11 @@ class LatestEvents extends Component {
 
         const { events, loading } = this.props.events;
 
-        let event = <Spinner />;
+        let event = (
+            <div>
+                <Spinner />
+            </div>
+        );
 
         // const { events } = this.state;
 

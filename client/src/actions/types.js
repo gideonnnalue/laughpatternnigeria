@@ -3,6 +3,8 @@ export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const GET_EVENT = "GET_EVENT";
+export const ADD_EVENT = "ADD_EVENT";
+export const DELETE_EVENT = "DELETE_EVENT";
 export const EVENT_LOADING = "EVENT_LOADING";
 export const EVENT_NOT_FOUND = "EVENT_NOT_FOUND";
 export const CLEAR_CURRENT_EVENT = "CLEAR_CURRENT_EVENT";
@@ -13,3 +15,8 @@ export const MEMBER_LOADING = "MEMBER_LOADING";
 export const MEMBER_NOT_FOUND = "MEMBER_NOT_FOUND";
 export const CLEAR_CURRENT_MEMBER = "CLEAR_CURRENT_MEMBER";
 export const GET_MEMBERS = "GET_MEMBERS";
+
+export const ADD_IMAGE = "ADD_IMAGE";
+export const DELETE_IMAGE = "DELETE_IMAGE";
+export const GET_IMAGES = "GET_IMAGES";
+export const IMAGES_LOADING = "IMAGES_LOADING";

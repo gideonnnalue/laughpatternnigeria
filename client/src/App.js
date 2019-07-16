@@ -6,6 +6,8 @@ import ScrollToTop from "./ScrollToTop";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { getAllEvents } from "./actions/eventActions";
+import { getImages } from "./actions/fileActions";
 
 // styling
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -77,6 +79,8 @@ class App extends Component {
                 ele.outerHTML = "";
             }, 2000);
         }
+        store.dispatch(getAllEvents());
+        store.dispatch(getImages());
         // this.authenticate().then(() => {
         //   const ele = document.getElementById('ipl-progress-indicator');
         //   if(ele){

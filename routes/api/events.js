@@ -95,7 +95,7 @@ router.post(
 
             newEvent
                 .save()
-                .then(event => res.json({ event }))
+                .then(event => res.json(event))
                 .catch(err => console.log(err));
         });
     },
@@ -174,7 +174,7 @@ router.delete(
     (req, res) => {
         Event.findOneAndRemove({ _id: req.params.eventId })
             .then(data => res.json({ msg: "success" }))
-            .catch(err => console.log(err));
+            .catch(err => res.json(err));
     }
 );
 

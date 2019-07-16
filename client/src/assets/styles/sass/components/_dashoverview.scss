@@ -1,14 +1,14 @@
 .dashboard__body {
     @include respond(phone) {
-        border-radius: .25rem !important;
-      }
+        border-radius: 0.25rem !important;
+    }
 }
 
 .dashboard__overview {
     @include respond(phone) {
         flex-direction: column !important;
         text-align: center;
-      }
+    }
 
     // &--icon {
     //     color: $color-primary
@@ -23,4 +23,3 @@
         }
     }
 }
-

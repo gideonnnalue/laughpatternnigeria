@@ -9,6 +9,7 @@ const path = require("path");
 const users = require("./routes/api/users");
 const events = require("./routes/api/events");
 const members = require("./routes/api/members");
+const images = require("./routes/api/images");
 
 const app = express();
 
@@ -39,6 +40,7 @@ require("./config/passport")(passport);
 app.use("/api/users", users);
 app.use("/api/events", events);
 app.use("/api/members", members);
+app.use("/api/images", images);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === "production") {

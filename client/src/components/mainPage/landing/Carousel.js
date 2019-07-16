@@ -51,19 +51,17 @@ class Carousel extends Component {
                     img: slide_three,
                     heading: "This is Laugh Pattern",
                     desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."
+                        "We are here to provide exclusive and the most exceptional entertainment services, top notch and affordable"
                 },
                 {
                     img: slide_two,
                     heading: "We Entertain",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."
+                    desc: "We provide Entertainment like no other"
                 },
                 {
                     img: slide_one,
                     heading: "We innovate",
-                    desc:
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, accusantium perspiciatis voluptates expedita provident temporibus dolor voluptas iste."
+                    desc: "We bring you the best with our range of services"
                 }
             ]
         };

@@ -8,27 +8,28 @@ import Ceo from "./Ceo";
 import LatestVideos from "./LatestVideos";
 import LatestEvents from "./LatestEvents";
 import Booking from "./Booking";
+import ComedyImages from "./ComedyImages";
 
 class Landing extends Component {
-
-  componentWillUnmount() {
-    this.props.turnOffNav();
-  }
-  render() {
-    return (
-      <main>
-        <Carousel />
-        <Info />
-        <About />
-        <Services />
-        <Overview />
-        <Ceo />
-        <LatestVideos />
-        <LatestEvents />
-        <Booking />
-      </main>
-    );
-  }
+    componentWillUnmount() {
+        this.props.turnOffNav();
+    }
+    render() {
+        return (
+            <main>
+                <Carousel />
+                <Info />
+                <About />
+                <Services />
+                <Overview />
+                <ComedyImages />
+                <Ceo />
+                <LatestVideos />
+                <LatestEvents />
+                <Booking />
+            </main>
+        );
+    }
 }
 
 export default Landing;

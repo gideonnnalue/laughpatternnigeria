@@ -1,39 +1,39 @@
 import {
-    EVENT_LOADING,
-    GET_EVENTS,
-    ADD_EVENT,
-    DELETE_EVENT
+    IMAGES_LOADING,
+    GET_IMAGES,
+    ADD_IMAGE,
+    DELETE_IMAGE
 } from "../actions/types";
 
 const initialState = {
-    event: null,
-    events: null,
+    image: null,
+    images: null,
     loading: false
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case EVENT_LOADING:
+        case IMAGES_LOADING:
             return {
                 ...state,
                 loading: true
             };
-        case GET_EVENTS:
+        case GET_IMAGES:
             return {
                 ...state,
-                events: action.payload,
+                images: action.payload,
                 loading: false
             };
-        case ADD_EVENT:
+        case ADD_IMAGE:
             return {
                 ...state,
-                events: [action.payload, ...state.events]
+                images: [action.payload, ...state.images]
             };
-        case DELETE_EVENT:
+        case DELETE_IMAGE:
             return {
                 ...state,
-                events: state.events.filter(
-                    event => event._id !== action.payload
+                images: state.images.filter(
+                    image => image._id !== action.payload
                 )
             };
         default:
