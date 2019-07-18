@@ -49,7 +49,7 @@ class Carousel extends Component {
             items: [
                 {
                     img: slide_three,
-                    heading: "This is Laugh Pattern",
+                    heading: "Laugh Pattern Nigeria",
                     desc:
                         "We are here to provide exclusive and the most exceptional entertainment services, top notch and affordable"
                 },

@@ -5,9 +5,15 @@ const sendgridAPIKey =
 
 sgMail.setApiKey(sendgridAPIKey);
 
-sgMail.send({
-    to: "emekannalue@gmail.com",
-    from: "gideonnnalue@yahoo.com",
-    subject: "This is an email test",
-    text: "I hope it is working fine"
-});
+if (
+    sgMail.send({
+        to: "gideonnnalue@yahoo.com",
+        from: "gideonnnalue@yahoo.com",
+        subject: "This is an email test",
+        text: "I hope it is working fine"
+    })
+) {
+    console.log("worked");
+} else {
+    console.log("mot worked");
+}

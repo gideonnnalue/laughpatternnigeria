@@ -86,15 +86,15 @@ class ComedyImages extends Component {
             autoplay: true,
             infinite: true,
             speed: 500,
-            slidesToShow: 4,
-            slidesToScroll: 4,
+            slidesToShow: 3,
+            slidesToScroll: 3,
             initialSlide: 0,
             responsive: [
                 {
                     breakpoint: 1024,
                     settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
                         infinite: true,
                         dots: true
                     }
@@ -123,8 +123,8 @@ class ComedyImages extends Component {
 
         if (!isEmpty(images) && !loading) {
             allImage = images.map((img, i) => (
-                <div key={i}>
-                    <img src={`/api/images/${img._id}`} alt="" width="250" />
+                <div key={i} className="comedy-image">
+                    <img src={`/api/images/${img._id}`} alt="" width="350" />
                 </div>
             ));
         }

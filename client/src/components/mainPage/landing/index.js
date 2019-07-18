@@ -9,6 +9,7 @@ import LatestVideos from "./LatestVideos";
 import LatestEvents from "./LatestEvents";
 import Booking from "./Booking";
 import ComedyImages from "./ComedyImages";
+import AnnualEvents from "./AnnualEvents";
 
 class Landing extends Component {
     componentWillUnmount() {
@@ -25,6 +26,7 @@ class Landing extends Component {
                 <ComedyImages />
                 <Ceo />
                 <LatestVideos />
+                <AnnualEvents />
                 <LatestEvents />
                 <Booking />
             </main>

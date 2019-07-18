@@ -13,29 +13,29 @@ class Login extends Component {
             email: "",
             password: "",
             errors: {}
-        }
-        
+        };
+
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
-        if(this.props.auth.isAuthenticated) {
-            this.props.history.push("/dashboard")
+        if (this.props.auth.isAuthenticated) {
+            this.props.history.push("/dashboard");
         }
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.auth.isAuthenticated) {
+        if (nextProps.auth.isAuthenticated) {
             this.props.history.push("/dashboard");
         }
-        if(nextProps.errors) {
-            this.setState({errors: nextProps.errors})
+        if (nextProps.errors) {
+            this.setState({ errors: nextProps.errors });
         }
     }
 
     onChange(e) {
-        this.setState({ [e.target.name]: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     onSubmit(e) {
@@ -44,7 +44,7 @@ class Login extends Component {
         const user = {
             email: this.state.email,
             password: this.state.password
-        }
+        };
 
         this.props.loginUser(user);
 
@@ -76,7 +76,10 @@ class Login extends Component {
                                                 errors={errors.email}
                                             />
                                         </div>
-                                        <div className="form-group" style={{ marginBottom: "7rem"}}>
+                                        <div
+                                            className="form-group"
+                                            style={{ marginBottom: "7rem" }}
+                                        >
                                             <InputTextGroup
                                                 type="password"
                                                 id="password"
@@ -93,10 +96,9 @@ class Login extends Component {
                                         type="submit"
                                         className="btns btns--red btns--forms btns--animated my-5 mx-auto w-100 mt-5"
                                         value="Submit"
-                                        
                                     />
                                 </form>
-                                <hr/>
+                                <hr />
                             </div>
                         </div>
                     </div>
@@ -110,11 +112,14 @@ Login.propTypes = {
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
     loginUser: PropTypes.func.isRequired
-}
+};
 
 const mapStateToProps = state => ({
     auth: state.auth,
     errors: state.errors
-})
+});
 
-export default connect(mapStateToProps, { loginUser })(Login);
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(Login);

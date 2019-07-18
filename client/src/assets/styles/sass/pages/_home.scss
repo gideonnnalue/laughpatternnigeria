@@ -179,7 +179,7 @@
         height: 500px;
         background: url(../../images/ceo2.jpg);
         background-size: cover;
-        background-position: center;
+        background-position: top;
     }
 }
 
@@ -187,6 +187,57 @@
     font-family: "Poppins", sans-serif;
     padding: 3rem;
     margin-top: 3rem;
+}
+
+.section-annualevents {
+    font-family: "Poppins", sans-serif;
+    padding: 3rem;
+    margin-top: 3rem;
+    background: linear-gradient(
+            to right,
+            rgba($color-white, 1),
+            rgba($color-white, 0.9)
+        ),
+        url(../../images/party2.jpg);
+    background-position: center;
+    background-size: cover;
+
+    // background-color: $color-grey-light-2;
+
+    .annualevents-slider {
+        margin-top: 6rem;
+        margin-bottom: 5rem;
+    }
+
+    .annualevents-info {
+        display: flex !important;
+        flex-direction: column;
+        // align-items: flex-start;
+        text-align: center;
+
+        &-item {
+        }
+
+        .annualevents-icon {
+            font-size: 4rem;
+        }
+
+        .annualevents-desc {
+            font-size: 1.6rem;
+            line-height: 1.8rem;
+
+            h4 {
+                font-size: 2rem;
+                font-weight: 700;
+                color: #404044;
+            }
+
+            p {
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+        }
+    }
 }
 
 .section-latest-events {
@@ -217,5 +268,11 @@
         @include respond(phone) {
             font-size: 2rem;
         }
+    }
+}
+
+.comedy-image {
+    img:hover {
+        // transform: scale(1.2);
     }
 }

@@ -23,6 +23,9 @@ class navigation extends Component {
                 <Link to="/">
                     <div className="navigation__logo">
                         <img src={logo} alt="laugh pattern nigeria" />
+                        <div className="navigation__logo-text mt-3">
+                            Making Laughter a Lifestyle...
+                        </div>
                     </div>
                 </Link>
 
