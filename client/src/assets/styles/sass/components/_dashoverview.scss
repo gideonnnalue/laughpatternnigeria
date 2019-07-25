@@ -4,6 +4,12 @@
     }
 }
 
+.dashboard__top {
+    @include respond(phone) {
+        display: block !important;
+    }
+}
+
 .dashboard__overview {
     @include respond(phone) {
         flex-direction: column !important;

@@ -6,6 +6,10 @@
     font-size: 1.6rem;
     padding: 10rem;
 
+    @include respond(phone) {
+        padding: 2rem;
+    }
+
     .nav-link {
         color: #555;
     }

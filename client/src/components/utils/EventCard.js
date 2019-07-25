@@ -7,13 +7,13 @@ const EventCard = props => {
         <div className="card events-event__card m-2">
             <img src={props.img} className="card-img-top" alt="..." />
             <div className="card-body events-event__body">
-                <Link to="/event/2343">
+                <Link to="#">
                     <h5 className="card-title events-event__title">
                         {props.title}
                     </h5>
                 </Link>
                 <p className="card-text events-event__desc">{props.desc}</p>
-                <Link to="/event/2343" className="btns-text">
+                <Link to="#" className="btns-text">
                     Read more
                 </Link>
             </div>
