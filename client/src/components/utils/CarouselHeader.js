@@ -21,9 +21,9 @@ const CarouselHeader = props => {
                             <Fade bottom opposite cascade duration={1000}>
                                 <div className="col text-white text-left carousel__content text-center">
                                     <h1 className="carousel__heading">
-                                        <Flip left cascade delay={1000}>
-                                            {props.heading}
-                                        </Flip>
+                                        {/* <Flip left cascade delay={1000}> */}
+                                        {props.heading}
+                                        {/* </Flip> */}
                                     </h1>
                                     <p className="carousel__paragraph mb-5">
                                         {props.desc}
