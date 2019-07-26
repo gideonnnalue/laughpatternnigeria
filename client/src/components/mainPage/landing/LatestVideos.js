@@ -9,7 +9,7 @@ class LatestVideos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videos: ["JpzZXSdXSMo", "7_hirmll4ZE", "Sxzcp78t9Ig"]
+            videos: ["JpzZXSdXSMo", "7_hirmll4ZE", "Sxzcp78t9Ig", "oQTBvRjvzoc"]
         };
 
         // , "563x563", "568x568", "562x562"
