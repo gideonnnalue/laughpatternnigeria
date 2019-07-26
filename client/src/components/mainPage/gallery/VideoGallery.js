@@ -6,60 +6,67 @@ import img from "../../../assets/images/carousel11.jpg";
 import img2 from "../../../assets/images/carousel2.jpg";
 
 class VideoGallery extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toggler: false,
-      slide: 1,
-      videos: [
-        { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
-        { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
-        { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" }
-      ]
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            toggler: false,
+            slide: 1,
+            videos: [
+                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
+                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
+                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" }
+            ]
+        };
 
-    this.openLightboxOnSlide = this.openLightboxOnSlide.bind(this);
-  }
+        this.openLightboxOnSlide = this.openLightboxOnSlide.bind(this);
+    }
 
-  openLightboxOnSlide(number) {
-    this.setState({ toggler: !this.state.toggler, slide: number });
-  }
-  render() {
-    const imageCard = this.state.videos.map((video, i) => (
-      <div class="card gallery__video-card">
-        <iframe
-          width="420"
-          height="315"
-          src="https://www.youtube.com/embed/tgbNymZ7vqY"
-        />
-        {/* <img
+    openLightboxOnSlide(number) {
+        this.setState({ toggler: !this.state.toggler, slide: number });
+    }
+    render() {
+        const imageCard = this.state.videos.map((video, i) => (
+            <div class="card gallery__video-card">
+                <iframe
+                    width="420"
+                    height="315"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                />
+                {/* <img
           src={image.img}
           class="card-img-top"
           alt="..."
           onClick={() => this.openLightboxOnSlide(i)}
         /> */}
-        {/* <div className="gallery__video-overlay color-white">
+                {/* <div className="gallery__video-overlay color-white">
           jjjjjjjjjjjjjjjjjjjjjj
         </div> */}
-      </div>
-    ));
-    return (
-      <section className="section-video-gallery">
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <h3 className="heading heading-primary mb-5">
-                <Flip bottom cascade>
-                  Video Gallery
-                </Flip>
-              </h3>
-              <div className="card-column">{imageCard}</div>
-              <FsLightbox
-                toggler={this.state.toggler}
-                slide={this.state.slide}
-                sources={this.state.videos.map(video => video.vid)}
-              />
-              {/* <a onClick={() => this.openLightboxOnSlide(1)}>
+            </div>
+        ));
+        return (
+            <section className="section-video-gallery">
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <h3 className="heading heading-primary mb-5">
+                                <Flip bottom cascade>
+                                    Video Gallery
+                                </Flip>
+                            </h3>
+                            <iframe
+                                src="http://www.youtube.com/embed/?listType=user_uploads&list=laughpatternnigeria@gmail.com"
+                                width="480"
+                                height="400"
+                            />
+                            <div className="card-column">{imageCard}</div>
+                            <FsLightbox
+                                toggler={this.state.toggler}
+                                slide={this.state.slide}
+                                sources={this.state.videos.map(
+                                    video => video.vid
+                                )}
+                            />
+                            {/* <a onClick={() => this.openLightboxOnSlide(1)}>
                 <img src={img} />
               </a>
               <a onClick={() => this.openLightboxOnSlide(2)}>
@@ -77,12 +84,12 @@ class VideoGallery extends Component {
                   "https://www.youtube.com/watch?v=xshEZzpS4CQ"
                 ]}
               /> */}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 }
 
 export default VideoGallery;

@@ -9,7 +9,7 @@ class LatestVideos extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            videos: ["565x565"]
+            videos: ["JpzZXSdXSMo", "7_hirmll4ZE", "Sxzcp78t9Ig"]
         };
 
         // , "563x563", "568x568", "562x562"
@@ -18,6 +18,7 @@ class LatestVideos extends Component {
         const latest = this.state.videos.map(video => (
             <LatestVideoCard
                 img={`https://source.unsplash.com/random/${video}`}
+                link={video}
                 key={video}
             />
         ));

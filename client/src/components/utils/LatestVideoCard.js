@@ -9,7 +9,7 @@ class LatestVideoCard extends Component {
                         width: "inherit",
                         height: "inherit"
                     }}
-                    src="https://www.youtube.com/embed/JpzZXSdXSMo"
+                    src={`https://www.youtube.com/embed/${this.props.link}`}
                 />
                 {/* <div
               style={{

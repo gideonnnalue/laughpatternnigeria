@@ -40,7 +40,7 @@ class Info extends Component {
                                     <i className="far fa-envelope" />
                                 </span>
                                 <h3>Email</h3>
-                                <p>laughpatternnigeria@yahoo.com</p>
+                                <p>laughpatternnigeria@gmail.com</p>
                             </div>
                         </div>
                     </Fade>

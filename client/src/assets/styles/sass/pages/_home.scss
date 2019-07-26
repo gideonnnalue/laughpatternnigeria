@@ -272,7 +272,11 @@
 }
 
 .comedy-image {
-    img:hover {
-        // transform: scale(1.2);
+    img {
+        width: 350px;
+
+        @include respond(phone) {
+            width: 270px;
+        }
     }
 }

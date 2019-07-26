@@ -124,7 +124,7 @@ class ComedyImages extends Component {
         if (!isEmpty(images) && !loading) {
             allImage = images.map((img, i) => (
                 <div key={i} className="comedy-image">
-                    <img src={`/api/images/${img._id}`} alt="" width="350" />
+                    <img src={`/api/images/${img._id}`} alt="" />
                 </div>
             ));
         }
