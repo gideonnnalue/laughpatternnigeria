@@ -4,12 +4,24 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+const nodemailer = require("nodemailer");
+
+const mailEmail = "laughpatternnigeria@gmail.com";
+
+// nodemailer options
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+        user: mailEmail,
+        pass: "tiffany992"
+    }
+});
 
 // multer
 
-const multer = require('multer');
+const multer = require("multer");
 const upload = multer({
-    dest: 'images'
+    dest: "images"
 });
 
 // Load input validators
@@ -107,6 +119,37 @@ router.post("/login", (req, res) => {
 // @route   POST api/users/current
 // @desc    Return current User
 // @access  Private
+router.post("/email", (req, res) => {
+    const error = {};
+    const message = `Full Name: ${req.body.fullname} \r\n Phone number: ${
+        req.body.phoneno
+    } \r\n Message: ${req.body.message}`;
+    const mailOptions = {
+        from: req.body.email,
+        to: mailEmail,
+        subject: req.body.subject,
+        text: message
+        // html: '<h1>Hi Smartherd</h1><p>Your Messsage</p>'
+    };
+
+    transporter.sendMail(mailOptions, function(err, info) {
+        if (err) {
+            error.error = err;
+            res.send(error);
+        } else {
+            error.noerror = "Email sent: " + info.response;
+            res.send(error);
+        }
+    });
+});
+
+router.post("/upload", upload.single("upload"), (req, res) => {
+    res.json({ msg: "working" });
+});
+
+// @route   POST api/users/current
+// @desc    Return current User
+// @access  Private
 router.get(
     "/current",
     passport.authenticate("jwt", { session: false }),
@@ -118,8 +161,8 @@ router.get(
     }
 );
 
-router.post('/upload', upload.single('upload'), (req, res) => {
-    res.json({msg: "working"})
-})
+router.post("/upload", upload.single("upload"), (req, res) => {
+    res.json({ msg: "working" });
+});
 
 module.exports = router;

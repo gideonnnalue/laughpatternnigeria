@@ -20,3 +20,6 @@ export const ADD_IMAGE = "ADD_IMAGE";
 export const DELETE_IMAGE = "DELETE_IMAGE";
 export const GET_IMAGES = "GET_IMAGES";
 export const IMAGES_LOADING = "IMAGES_LOADING";
+
+export const MESSAGE_LOADING = "MESSGE_LOADING";
+export const MESSAGE_SENT = "MESSAGE_SENT";
