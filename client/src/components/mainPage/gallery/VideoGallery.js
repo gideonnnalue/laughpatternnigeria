@@ -5,17 +5,15 @@ import Fade from "react-reveal/Fade";
 import img from "../../../assets/images/carousel11.jpg";
 import img2 from "../../../assets/images/carousel2.jpg";
 
+import axios from "axios";
+
 class VideoGallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
             toggler: false,
             slide: 1,
-            videos: [
-                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
-                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" },
-                { vid: "https://www.youtube.com/watch?v=YgzrVs2eilU" }
-            ]
+            videos: []
         };
 
         this.openLightboxOnSlide = this.openLightboxOnSlide.bind(this);
@@ -24,13 +22,40 @@ class VideoGallery extends Component {
     openLightboxOnSlide(number) {
         this.setState({ toggler: !this.state.toggler, slide: number });
     }
+
+    componentDidMount() {
+        const apiKey = "AIzaSyAeeR0uIKiiPWz5m7DboudXhM3Hrmbk9Fc";
+        const channelId = "UCokgaZOCyQoKOeeckEPpX4Q";
+        const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=20`;
+
+        axios
+            .get(url)
+            .then(res => {
+                // let videos = [];
+                let videos = res.data.items
+                    .map((item, i) => {
+                        return {
+                            video: item.id.videoId,
+                            thmb: item.snippet.thumbnails.medium.url
+                        };
+                    })
+                    .filter(item => item.video !== undefined);
+
+                this.setState({ videos });
+            })
+            .catch(err => console.log("err: " + err));
+    }
+
     render() {
         const imageCard = this.state.videos.map((video, i) => (
-            <div class="card gallery__video-card">
+            <div className="card gallery__video-card mr-2" key={i}>
                 <iframe
                     width="420"
                     height="315"
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY"
+                    src={`https://www.youtube.com/embed/${video.video}`}
+                    style={{
+                        border: "1px solid #989898"
+                    }}
                 />
                 {/* <img
           src={image.img}
@@ -44,7 +69,7 @@ class VideoGallery extends Component {
             </div>
         ));
         return (
-            <section className="section-video-gallery">
+            <section className="section-video-gallery" id="videoGallery">
                 <div className="container">
                     <div className="row">
                         <div className="col">
@@ -53,19 +78,14 @@ class VideoGallery extends Component {
                                     Video Gallery
                                 </Flip>
                             </h3>
-                            <iframe
-                                src="http://www.youtube.com/embed/?listType=user_uploads&list=laughpatternnigeria@gmail.com"
-                                width="480"
-                                height="400"
-                            />
                             <div className="card-column">{imageCard}</div>
-                            <FsLightbox
+                            {/* <FsLightbox
                                 toggler={this.state.toggler}
                                 slide={this.state.slide}
                                 sources={this.state.videos.map(
                                     video => video.vid
                                 )}
-                            />
+                            /> */}
                             {/* <a onClick={() => this.openLightboxOnSlide(1)}>
                 <img src={img} />
               </a>

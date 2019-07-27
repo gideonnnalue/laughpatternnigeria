@@ -55,10 +55,10 @@ class ImageGallery extends Component {
     }
     render() {
         const imageCard = this.state.images.map((image, i) => (
-            <div class="card gallery__image-card mx-1">
+            <div className="card gallery__image-card mx-1" key={i}>
                 <img
                     src={require(`../../../assets/images/img${i + 1}.jpg`)}
-                    class="card-img-top"
+                    className="card-img-top"
                     alt="..."
                     onClick={() => this.openLightboxOnSlide(i)}
                 />
