@@ -69,14 +69,14 @@ class navigation extends Component {
                                 <span>03 </span>Events
                             </NavLink>
                         </li>
-                        <li className="navigation__item">
+                        {/* <li className="navigation__item">
                             <NavLink to="/news" className="navigation__link">
                                 <span>04 </span>News Feed
                             </NavLink>
-                        </li>
+                        </li> */}
                         <li className="navigation__item">
                             <NavLink to="/gallery" className="navigation__link">
-                                <span>05 </span>Gallery
+                                <span>04 </span>Gallery
                             </NavLink>
                         </li>
                         {/* <li className="navigation__item">
@@ -90,7 +90,7 @@ class navigation extends Component {
                                     to="/dashboard"
                                     className="navigation__link"
                                 >
-                                    <span>07 </span>Dashboard
+                                    <span>05 </span>Dashboard
                                 </NavLink>
                             </li>
                         ) : (
