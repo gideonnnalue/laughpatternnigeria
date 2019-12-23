@@ -14,7 +14,7 @@ class Info extends Component {
                                 </span>
                                 <h3>Address</h3>
                                 <p>
-                                    NPlot 96 Anwai Road Opposite Nelrose Hotel
+                                    Plot 96 Anwai Road Opposite Nelrose Hotel
                                     Asaba, Delta State
                                 </p>
                             </div>
