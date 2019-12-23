@@ -13,7 +13,10 @@ class Info extends Component {
                                     <i className="far fa-map" />
                                 </span>
                                 <h3>Address</h3>
-                                <p>No. 72 Okpanam Road Asaba</p>
+                                <p>
+                                    NPlot 96 Anwai Road Opposite Nelrose Hotel
+                                    Asaba, Delta State
+                                </p>
                             </div>
                             <div className="col-lg-3 col-md-6 text-center">
                                 <span className="info-icons">

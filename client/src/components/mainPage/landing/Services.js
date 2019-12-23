@@ -15,6 +15,12 @@ class Services extends Component {
                         "We provide you with moments to remember with out quality event management services"
                 },
                 {
+                    icon: "fas fa-camera-retro",
+                    heading: "Photo studio",
+                    desc:
+                        "We offer picture perfect images to capture every moment in the most unique way"
+                },
+                {
                     icon: "fas fa-plane-departure",
                     heading: "Flight Booking",
                     desc:

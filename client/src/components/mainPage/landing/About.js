@@ -21,7 +21,10 @@ class About extends Component {
                                 <p className="mb-5">
                                     Event Managment, Flight Booking, Event
                                     Security and Bouncer , Event Place, Master
-                                    Of Ceremony(MC), Dj Services(DJ), Decourator
+                                    Of Ceremony(MC), Dj Services(DJ),
+                                    Decourator, Photo studio and Event coverage,
+                                    Cinematography, Photography photobook and
+                                    Photo Enlargement.
                                 </p>
                             </Fade>
                         </div>
